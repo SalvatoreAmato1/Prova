@@ -41,5 +41,22 @@ public class Contatto {
     public String[] getMail() {
         return mail;
     }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
+
+    public void setNumeri(String[] numeri) {
+        this.numeri = numeri;
+    }
+
+    public void setMail(String[] mail) {
+        this.mail = mail;
+    }
+    
     
 }
