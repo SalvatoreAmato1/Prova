@@ -33,15 +33,6 @@ public class Contatto {
     public String getCognome() {
         return cognome;
     }
-
-    public String[] getNumeri() {
-        return numeri;
-    }
-
-    public String[] getMail() {
-        return mail;
-    }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -50,12 +41,49 @@ public class Contatto {
         this.cognome = cognome;
     }
 
-    public void setNumeri(String[] numeri) {
-        this.numeri = numeri;
+    public void setNumeroAt(int index, String numero) {
+        if (!validaNumero(numero)) {
+            throw new RuntimeException("Numero non valido!");
+        }
+        if (index >= 0 && index < MAX_NUMERI) {
+            numeri[index] = numero;
+        } else {
+            throw new IndexOutOfBoundsException("Indice fuori dal range!");
+        }
     }
 
-    public void setMail(String[] mail) {
-        this.mail = mail;
+    public String getNumeroAt(int index) {
+        if (index >= 0 && index < MAX_NUMERI) {
+            return numeri[index];
+        } else {
+            throw new IndexOutOfBoundsException("Indice fuori dal range!");
+        }
+    }
+
+    public void setMailAt(int index, String email) {
+        if (!validaMail(email)) {
+            throw new RuntimeException("Email non valida!");
+        }
+        if (index >= 0 && index < MAX_EMAIL) {
+            mail[index] = email;
+        } else {
+            throw new IndexOutOfBoundsException("Indice fuori dal range!");
+        }
+    }
+
+    public String getMailAt(int index) {
+        if (index >= 0 && index < MAX_EMAIL) {
+            return mail[index];
+        } else {
+            throw new IndexOutOfBoundsException("Indice fuori dal range!");
+        }
+    }
+    private boolean validaNumero(String numero) {
+        return numero.matches("\\d{10}"); // Es.: numero di 10 cifre
+    }
+
+    private boolean validaMail(String email) {
+        return email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"); // Pattern per una mail valida
     }
     
     
